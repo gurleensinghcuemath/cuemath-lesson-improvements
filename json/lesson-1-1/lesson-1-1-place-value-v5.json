@@ -1,0 +1,1028 @@
+{
+  "id": "mk-f-place-value-v5",
+  "slug": "mk-f-place-value-v5",
+  "title": "Reading & Building Numbers from Place Value",
+  "lessonNumber": "1.1",
+  "technique": "Read any digit's value by its place. Build the BIGGEST and smallest number from digit tiles. Name a number from X hundreds, Y tens, Z ones.",
+  "skills": ["mk-number-theory", "mk-number-theory-place-value", "mk-number-theory-digits"],
+  "estimatedMinutes": 25,
+  "difficulty": "3pt–4pt",
+  "status": "authored",
+  "pyqSources": {
+    "worked_example_1": { "year": 2014, "q": "Q02", "difficulty": 3 },
+    "worked_example_2": { "year": 2000, "q": "Q10", "difficulty": 4 },
+    "practice": [
+      { "year": 2013, "q": "Q08", "difficulty": 3 },
+      { "year": 2007, "q": "Q15", "difficulty": 4 },
+      { "year": 2019, "q": "Q14", "difficulty": 4 }
+    ],
+    "challenge_extension": { "year": 1999, "q": "Q22", "difficulty": 5 }
+  },
+
+  "blocks": [
+    {
+      "id": "block-1-challenge-first",
+      "block_type": "challenge_first",
+      "title": "Challenge First",
+      "note": "Students attempt cold. Hint ladder activates after 2 min. Max 3 hints per question.",
+      "estimatedMinutes": 4,
+      "hintLadderDelaySeconds": 120,
+      "questions": [
+        {
+          "id": "CF1",
+          "type": "mcq",
+          "source": "original",
+          "question": "A number bag drops three digit tiles on your desk: [card:8], [card:3], and [card:5]. Use each tile exactly once. What is the BIGGEST number you can build?",
+          "options": ["358", "385", "538", "583", "853"],
+          "answer": 4,
+          "explanation": "Biggest digit first — 8 in Hundreds, 5 in Tens, 3 in Ones gives 853.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-3pt", "challenge-first"],
+          "hints": [
+            "Hundreds is worth the most of all three places.",
+            "Biggest tile earns the biggest seat.",
+            "Which of 8, 3, 5 is the biggest?"
+          ]
+        },
+        {
+          "id": "CF2",
+          "type": "mcq",
+          "source": "original",
+          "question": "Same three tiles — [card:8], [card:3], and [card:5]. Now make the SMALLEST 3-digit number.",
+          "options": ["358", "385", "530", "583", "835"],
+          "answer": 0,
+          "explanation": "Smallest digit first — 3 in Hundreds, 5 in Tens, 8 in Ones gives 358.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-3pt", "challenge-first"],
+          "hints": [
+            "Smallest tile earns the Hundreds seat now.",
+            "Which of 8, 3, 5 is the smallest?",
+            "After placing 3 in Hundreds, sort the rest smallest first."
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "block-2-interactive-lesson",
+      "block_type": "interactive_lesson",
+      "title": "Crack the Code — Place Value in Action",
+      "note": "Three techniques: decompose into Hundreds/Tens/Ones, build biggest/smallest from digit tiles, read a description and name the number. CPA rhythm per section. Visual-first, no passive cards.",
+      "designPrinciples": ["visual-first", "no-passive-cards", "format-matches-operation", "cpa-rhythm"],
+      "estimatedMinutes": 12,
+      "steps": [
+        {
+          "id": "ilesson-step-0-predict-smallest-leading-zero",
+          "type": "predict",
+          "conceptId": "largest-smallest-formation",
+          "title": "Three digits. Smallest number?",
+          "text": "Using the digits 4, 0, and 8 once each — what is the smallest 3-digit number you can make?",
+          "visual": { "id": "digit-blocks", "params": { "number": 408 } },
+          "prompt": "Smallest = {blank}",
+          "inputType": "number",
+          "answer": 408,
+          "tolerance": 0,
+          "maxAttempts": 1,
+          "proceedRegardless": true,
+          "onCorrect": { "feedback": "Sharp — you already know the trick that trips everyone up." },
+          "onWrong": { "feedback": "048 is just 48 — zero cannot sit in front. We will sort this out in two minutes." }
+        },
+        {
+          "id": "ilesson-step-1-explain-pv-ratio",
+          "type": "explain",
+          "conceptId": "place-value-ratio",
+          "title": "Same digit. Three totally different values?",
+          "text": "Look at the three 7s. Same digit — completely different values. The column it sits in changes everything.",
+          "visual": { "id": "place-value-777", "params": {} },
+          "keyInsight": "Move one place left — value jumps 10 times. Every single time.",
+          "endQuestion": {
+            "prompt": "The Hundreds 7 is worth {blank} times the Ones 7.",
+            "blank": { "type": "number", "answer": 100, "tolerance": 0 }
+          }
+        },
+        {
+          "id": "ilesson-step-2-applet-pv-chart-777",
+          "type": "applet",
+          "conceptId": "place-value-ratio",
+          "appletType": "place-value-chart",
+          "title": "Tap each column",
+          "instruction": "Tap each of the three columns to reveal what its 7 is worth.",
+          "config": { "number": 777 },
+          "discoveryQuestion": {
+            "prompt": "Each column is {blank} times bigger than the one just to its right.",
+            "type": "number",
+            "answer": 10,
+            "tolerance": 0
+          },
+          "discoveryMessage": "7 times 10 equals 70. 70 times 10 equals 700. One step left — 10 times bigger. Always."
+        },
+        {
+          "id": "ilesson-step-3-apply-read-749",
+          "type": "apply",
+          "conceptId": "place-value-decompose",
+          "title": "What is each digit worth in 749?",
+          "text": "Same rule, fresh number. Find what each digit is worth — one column at a time.",
+          "visual": { "id": "digit-blocks", "params": { "number": 749 } },
+          "steps": [
+            { "prompt": "Hundreds digit 7 is worth {blank}", "answer": 700, "hint": "7 sits in Hundreds — 7 times 100 = ?" },
+            { "prompt": "Tens digit 4 is worth {blank}", "answer": 40, "hint": "4 sits in Tens — 4 times 10 = ?" },
+            { "prompt": "Ones digit 9 is worth {blank}", "answer": 9, "hint": "9 sits in Ones — 9 times 1 = ?" }
+          ],
+          "onWrong": { "adaptiveNextStep": "place-value-decompose" },
+          "onAllCorrect": {
+            "summary": "You can read any digit's value.",
+            "feedback": "Now — can you build a number from loose digit tiles?"
+          }
+        },
+        {
+          "id": "ilesson-step-4-explain-build-sort",
+          "type": "explain",
+          "conceptId": "largest-smallest-formation",
+          "title": "Sort the digits. Big ones go left.",
+          "text": "Hundreds is worth 100 times more than Ones. So the biggest digit always belongs in Hundreds.",
+          "visual": { "id": "digit-cards-row", "params": { "digits": [6, 2, 9], "caption": "Which dial takes the biggest digit?" } },
+          "keyInsight": "Zero cannot lead — it goes in Tens or Ones, never Hundreds.",
+          "endQuestion": {
+            "prompt": "Using digits 3, 8, 1 once each — the BIGGEST 3-digit number is {blank}.",
+            "blank": { "type": "number", "answer": 831, "tolerance": 0 }
+          }
+        },
+        {
+          "id": "ilesson-step-5-applet-digit-rearranger-407",
+          "type": "applet",
+          "conceptId": "largest-smallest-formation",
+          "appletType": "digit-rearranger",
+          "title": "Drag and drop",
+          "instruction": "Drag digits 4, 0, 7 into Hundreds, Tens, Ones to make the SMALLEST 3-digit number.",
+          "config": { "digits": [4, 0, 7] },
+          "discoveryQuestion": {
+            "prompt": "Smallest 3-digit number using digits 4, 0, 7 is {blank}.",
+            "type": "number",
+            "answer": 407,
+            "tolerance": 0
+          },
+          "discoveryMessage": "Zero cannot lead — 047 is just 47. So 4 takes Hundreds and 0 slides to Tens. Result: 407."
+        },
+        {
+          "id": "ilesson-step-6-apply-build-checks",
+          "type": "apply",
+          "conceptId": "largest-smallest-formation",
+          "title": "Three quick checks",
+          "text": "Three checks — biggest, smallest, and the sneaky zero rule all together.",
+          "visual": { "id": "digit-cards-row", "params": { "digits": [0, 6, 3] } },
+          "steps": [
+            { "prompt": "BIGGEST from 2, 9, 5 = {blank}", "answer": 952, "hint": "Biggest digit fills Hundreds. Then Tens. Then Ones." },
+            { "prompt": "Smallest from 2, 9, 5 = {blank}", "answer": 259, "hint": "Smallest digit fills Hundreds first." },
+            { "prompt": "Smallest from 0, 6, 3 = {blank}", "answer": 306, "hint": "Zero cannot go first — which digit is smallest after zero?" }
+          ],
+          "onWrong": { "adaptiveNextStep": "largest-smallest-formation" },
+          "onAllCorrect": {
+            "summary": "You can build any biggest or smallest number.",
+            "feedback": "One more tool — read a description and name the number."
+          }
+        },
+        {
+          "id": "ilesson-step-7-explain-zero-placeholder",
+          "type": "explain",
+          "conceptId": "expanded-form-zero-placeholder",
+          "title": "Zero looks empty. It is not.",
+          "text": "408 and 48 look similar. But zero in the Tens column pushes the 4 all the way to Hundreds. Remove the zero and the number collapses.",
+          "visual": { "id": "place-value-breakdown", "params": { "number": 408 } },
+          "keyInsight": "Zero is not missing. It is working — holding every other digit in the right seat.",
+          "endQuestion": {
+            "prompt": "300 + 0 + 7 = {blank}",
+            "blank": { "type": "number", "answer": 307, "tolerance": 0 }
+          }
+        },
+        {
+          "id": "ilesson-step-8-applet-number-builder",
+          "type": "applet",
+          "conceptId": "expanded-form-zero-placeholder",
+          "appletType": "number-builder",
+          "title": "Build each number",
+          "instruction": "Three targets — each has a zero hiding in a different spot. Press + or − to build each one.",
+          "config": {
+            "rounds": [
+              { "target": 603, "initialDigits": [0, 0, 0] },
+              { "target": 480, "initialDigits": [0, 0, 0] },
+              { "target": 205, "initialDigits": [0, 0, 0] }
+            ]
+          },
+          "discoveryQuestion": {
+            "prompt": "In 603, the value of the Tens digit is {blank}.",
+            "type": "number",
+            "answer": 0,
+            "tolerance": 0
+          },
+          "discoveryMessage": "603 = 600 + 0 + 3. 480 = 400 + 80 + 0. Zero is always on the job — keeping every other digit exactly where it belongs."
+        },
+        {
+          "id": "ilesson-step-9-apply-zero-checks",
+          "type": "apply",
+          "conceptId": "expanded-form-zero-placeholder",
+          "title": "Three quick checks",
+          "text": "Expanded form, zero placeholders, and value descriptions — lock all three in.",
+          "visual": { "id": "place-value-breakdown", "params": { "number": 480 } },
+          "steps": [
+            {
+              "prompt": "Expanded form of 480 is {blank}.",
+              "inputType": "choice",
+              "options": ["400 + 80 + 0", "40 + 80 + 0", "400 + 8 + 0", "400 + 80"],
+              "answer": 0,
+              "hint": "4 Hundreds = 400. 8 Tens = 80. 0 Ones = 0."
+            },
+            { "prompt": "300 + 0 + 6 = {blank}", "answer": 306, "hint": "Hundreds 300, Tens 0, Ones 6 — put them together." },
+            { "prompt": "7 Hundreds, 0 Tens, 9 Ones. The number is {blank}.", "answer": 709, "hint": "Add up: 700 + 0 + 9 = ?" }
+          ],
+          "onWrong": { "adaptiveNextStep": "expanded-form-zero-placeholder" },
+          "onAllCorrect": {
+            "summary": "All three tools are ready.",
+            "feedback": "Time to seal them in."
+          }
+        },
+        {
+          "id": "ilesson-step-10-reveal-case-closed",
+          "type": "reveal",
+          "title": "Case Closed. Three Tools. Every Problem Solved.",
+          "rules": [
+            {
+              "name": "Break it apart",
+              "statement": "Find what each digit is worth.",
+              "example": "749 = 700 + 40 + 9"
+            },
+            {
+              "name": "Build biggest or smallest",
+              "statement": "Big digits go left. Zero cannot lead.",
+              "example": "0, 6, 3 → BIGGEST: 630 · smallest: 306"
+            },
+            {
+              "name": "Read and name",
+              "statement": "Say each place value, then add up.",
+              "example": "5 Hundreds + 8 Tens + 2 Ones = 582"
+            }
+          ],
+          "curiosity": {
+            "prompt": "Add the digits of 408: 4 + 0 + 8 = {blank}",
+            "answer": 12,
+            "reveal": "That 12 is called the digit sum. It ignores position entirely — but it unlocks hidden patterns that competition problems love to exploit. Lesson 1.2 starts there."
+          },
+          "cta": "Next: Two real competition problems — solved step by step →"
+        }
+      ],
+      "remediations": {
+        "place-value-ratio": {
+          "type": "remediate",
+          "id": "remediate-place-value-ratio",
+          "conceptId": "place-value-ratio",
+          "title": "Quick refresher — the 10 times rule",
+          "text": "Each step left is 10 times more valuable. 7 times 10 = 70. 70 times 10 = 700. Hundreds is 10 times Tens. Tens is 10 times Ones.",
+          "visual": { "id": "place-value-777", "params": {} },
+          "miniCheck": {
+            "prompt": "The Hundreds digit is worth ___ times the Ones digit.",
+            "inputType": "choice",
+            "options": ["10", "100", "1000"],
+            "answer": 1,
+            "feedback": "Hundreds = 100. Ones = 1. So Hundreds is 100 times bigger."
+          }
+        },
+        "place-value-decompose": {
+          "type": "remediate",
+          "id": "remediate-place-value-decompose",
+          "conceptId": "place-value-decompose",
+          "title": "Walk through one digit at a time",
+          "text": "Read the place, then multiply. Hundreds digit times 100. Tens digit times 10. Ones digit times 1.",
+          "visual": { "id": "digit-blocks", "params": { "number": 853 } },
+          "miniCheck": {
+            "prompt": "In 853, the value of digit 5 is ___.",
+            "inputType": "choice",
+            "options": ["5", "50", "500"],
+            "answer": 1,
+            "feedback": "5 is in Tens — 5 times 10 = 50."
+          }
+        },
+        "largest-smallest-formation": {
+          "type": "remediate",
+          "id": "remediate-largest-smallest-formation",
+          "conceptId": "largest-smallest-formation",
+          "title": "Sort it. Watch out for zero.",
+          "text": "For the biggest number — sort digits from biggest to smallest across Hundreds, Tens, Ones. For the smallest — sort the other way, but zero cannot go in Hundreds.",
+          "visual": { "id": "digit-cards-row", "params": { "digits": [4, 0, 7] } },
+          "miniCheck": {
+            "prompt": "Smallest 3-digit number from digits 4, 0, 7 is ___.",
+            "inputType": "choice",
+            "options": ["470", "704", "407"],
+            "answer": 2,
+            "feedback": "Zero cannot lead. Next-smallest digit (4) takes Hundreds — so 407."
+          }
+        },
+        "expanded-form-zero-placeholder": {
+          "type": "remediate",
+          "id": "remediate-expanded-form-zero-placeholder",
+          "conceptId": "expanded-form-zero-placeholder",
+          "title": "Zero holds a place — it never disappears",
+          "text": "Zero in a column means nothing there — but it keeps every other digit in the right seat. 408 = 400 + 0 + 8. Drop the zero and you get 48. Completely different number.",
+          "visual": { "id": "place-value-breakdown", "params": { "number": 408 } },
+          "miniCheck": {
+            "prompt": "Expanded form of 506 is ___.",
+            "inputType": "choice",
+            "options": ["50 + 6", "500 + 0 + 6", "500 + 60"],
+            "answer": 1,
+            "feedback": "5 Hundreds = 500, 0 Tens = 0, 6 Ones = 6 — so 500 + 0 + 6."
+          }
+        }
+      }
+    },
+
+    {
+      "id": "block-3-worked-example-1",
+      "block_type": "worked_example",
+      "index": 1,
+      "title": "Worked Example 1 — MK 2014 Q02",
+      "estimatedMinutes": 4,
+      "pyqRef": { "year": 2014, "q": "Q02", "difficulty": 3 },
+      "problem": {
+        "type": "mcq",
+        "source": "pyq",
+        "question": "Jackie wants to place the digit 3 somewhere in the number 2014. Where should she place the digit 3 to make the resulting five-digit number as small as possible?",
+        "options": [
+          "(A) in front of 2014",
+          "(B) between the 2 and the 0",
+          "(C) between the 0 and the 1",
+          "(D) between the 1 and the 4",
+          "(E) after 2014"
+        ],
+        "answer": 3,
+        "figure": { "src": "/figures/mk-grade-3-4/lesson-1-1/MK_L11_WE1_insertion_positions.svg" },
+        "difficulty": 3,
+        "figureBased": true,
+        "figuresInOptions": true,
+        "pyqRef": { "year": 2014, "q": "Q02", "difficulty": 3 }
+      },
+      "scaffoldedSteps": [
+        {
+          "id": "we1-step-1",
+          "title": "Count the gaps",
+          "narrationSegments": [
+            { "type": "text", "content": "Digit 3 can go in any gap — before a digit, between two digits, or after the last one." },
+            { "type": "text", "content": "A 4-digit number has 5 possible gaps: one before the first digit, three between adjacent digits, one after the last." }
+          ],
+          "figure": { "src": "/figures/mk-grade-3-4/lesson-1-1/MK_L11_WE1_insertion_positions.svg" },
+          "checkpoints": [
+            {
+              "id": "we1-s1-cp1",
+              "afterSegmentIndex": 1,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "How many different gaps can digit 3 go into? {blank}",
+                "answer": 5,
+                "tolerance": 0,
+                "hints": [
+                  "Count all positions: before, between each pair, after.",
+                  "A 4-digit number has how many gaps total?",
+                  "Before + 3 between-pairs + after = ?"
+                ],
+                "explanation": "4 digits create 5 gaps: before 2, between 2 and 0, between 0 and 1, between 1 and 4, after 4."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we1-step-2",
+          "title": "Write out all five numbers",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "Each gap produces a different 5-digit number:",
+              "items": [
+                "A — before 2 → 32014",
+                "B — between 2 and 0 → 23014",
+                "C — between 0 and 1 → 20314",
+                "D — between 1 and 4 → 20134",
+                "E — after 4 → 20143"
+              ]
+            }
+          ],
+          "checkpoints": [
+            {
+              "id": "we1-s2-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "Gap C — between 0 and 1 — gives the number {blank}.",
+                "answer": 20314,
+                "tolerance": 0,
+                "hints": [
+                  "Write the digits in order with 3 inserted between 0 and 1.",
+                  "Sequence: 2, 0, 3, 1, 4 — read as one number.",
+                  "2 in ten-thousands, 0 in thousands, 3 in hundreds — keep going."
+                ],
+                "explanation": "2 · 0 · 3 · 1 · 4 → 20314."
+              }
+            },
+            {
+              "id": "we1-s2-cp2",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "Gap D — between 1 and 4 — gives the number {blank}.",
+                "answer": 20134,
+                "tolerance": 0,
+                "hints": [
+                  "Write the digits in order with 3 inserted between 1 and 4.",
+                  "Sequence: 2, 0, 1, 3, 4 — read as one number.",
+                  "2 in ten-thousands, 0 in thousands, 1 in hundreds — keep going."
+                ],
+                "explanation": "2 · 0 · 1 · 3 · 4 → 20134."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we1-step-3",
+          "title": "Cut the biggest starter",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "Goal: find the smallest. Compare left to right, one digit at a time.",
+              "items": [
+                "A → 32014 — first digit is 3",
+                "B, C, D, E → first digit is 2",
+                "3 is bigger than 2 — cross out A"
+              ]
+            }
+          ],
+          "checkpoints": [
+            {
+              "id": "we1-s3-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "mcq",
+                "question": "After crossing out A, how many numbers are still in the game?",
+                "options": ["(A) 3", "(B) 4", "(C) 5"],
+                "answer": 1,
+                "hints": [
+                  "You started with 5 numbers.",
+                  "You crossed out 1. How many remain?",
+                  "5 minus 1 = ?"
+                ],
+                "explanation": "5 numbers minus 1 crossed out = 4 still in the game: B, C, D, E."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we1-step-4",
+          "title": "Keep cutting — compare the next digits",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "B, C, D, E all start with 2. Compare their second digit:",
+              "items": [
+                "B → 23014 — second digit is 3",
+                "C, D, E → second digit is 0",
+                "3 is bigger — cross out B"
+              ]
+            },
+            {
+              "type": "list",
+              "content": "C, D, E all have 20 at the start. Compare their third digit:",
+              "items": [
+                "C → 20314 — third digit is 3",
+                "D → 20134 — third digit is 1",
+                "E → 20143 — third digit is 1",
+                "3 is biggest — cross out C"
+              ]
+            }
+          ],
+          "checkpoints": [
+            {
+              "id": "we1-s4-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "The second digit of 23014 is {blank}.",
+                "answer": 3,
+                "tolerance": 0,
+                "hints": [
+                  "Read 23014 left to right: first digit is 2.",
+                  "The second digit comes right after the 2.",
+                  "2, then what digit follows?"
+                ],
+                "explanation": "23014: digits in order are 2, 3, 0, 1, 4. Second digit = 3."
+              }
+            },
+            {
+              "id": "we1-s4-cp2",
+              "afterSegmentIndex": 1,
+              "question": {
+                "type": "mcq",
+                "question": "Two numbers are still in the game. Which pair?",
+                "options": ["(A) 20134 and 20143", "(B) 20314 and 20134", "(C) 23014 and 20314"],
+                "answer": 0,
+                "hints": [
+                  "A, B, C have all been crossed out.",
+                  "Only two letters from the original five remain.",
+                  "Which two letters have not been crossed out?"
+                ],
+                "explanation": "Crossed out: A (first digit), B (second digit), C (third digit). Remaining: D = 20134 and E = 20143."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we1-step-5",
+          "title": "Last two standing",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "D and E share the same first three digits. The fourth digit decides it:",
+              "items": [
+                "D → 20134 — fourth digit is 3",
+                "E → 20143 — fourth digit is 4",
+                "3 is less than 4 — D wins"
+              ]
+            },
+            { "type": "text", "content": "Answer: place 3 between 1 and 4. To minimize — push the inserted digit right, past smaller digits. To maximize — push it left." }
+          ],
+          "checkpoints": [
+            {
+              "id": "we1-s5-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "mcq",
+                "question": "Which is smaller — 20134 or 20143?",
+                "options": ["(A) 20134", "(B) 20143"],
+                "answer": 0,
+                "hints": [
+                  "First three digits of both are identical.",
+                  "The fourth digit is different — compare those.",
+                  "Which fourth digit is smaller: 3 or 4?"
+                ],
+                "explanation": "Same first three digits. Fourth digit: 20134 has 3, 20143 has 4. Since 3 is less than 4, 20134 is smaller."
+              }
+            },
+            {
+              "id": "we1-s5-cp2",
+              "afterSegmentIndex": 1,
+              "question": {
+                "type": "mcq",
+                "question": "What if Jackie wanted the BIGGEST number instead?",
+                "options": [
+                  "(A) Place 3 in front → 32014",
+                  "(B) Place 3 between 0 and 1 → 20314",
+                  "(C) Place 3 after 4 → 20143"
+                ],
+                "answer": 0,
+                "hints": [
+                  "To maximize, first digit must be biggest.",
+                  "Is 3 bigger than 2?",
+                  "Which position puts 3 in the ten-thousands place?"
+                ],
+                "explanation": "3 is bigger than 2. Placing 3 at the front gives 32014 — the largest possible option."
+              }
+            }
+          ],
+          "insight": "To minimize — push the inserted digit right, past all smaller digits. To maximize — push it left."
+        }
+      ]
+    },
+
+    {
+      "id": "block-4-worked-example-2",
+      "block_type": "worked_example",
+      "index": 2,
+      "title": "Worked Example 2 — MK 2000 Q10",
+      "estimatedMinutes": 4,
+      "pyqRef": { "year": 2000, "q": "Q10", "difficulty": 4 },
+      "problem": {
+        "type": "mcq",
+        "source": "pyq",
+        "question": "Which four digits need to be removed from the number 4921508 to get the smallest possible three-digit number?",
+        "options": [
+          "(A) 4, 9, 2, 1",
+          "(B) 4, 2, 1, 0",
+          "(C) 1, 5, 0, 8",
+          "(D) 4, 9, 2, 5",
+          "(E) 4, 9, 5, 8"
+        ],
+        "answer": 3,
+        "figure": { "src": "/figures/mk-grade-3-4/lesson-1-1/MK_L11_WE2_digit_sequence.svg" },
+        "difficulty": 4,
+        "figureBased": true,
+        "pyqRef": { "year": 2000, "q": "Q10", "difficulty": 4 }
+      },
+      "scaffoldedSteps": [
+        {
+          "id": "we2-step-1",
+          "title": "Understand the rule",
+          "narrationSegments": [
+            { "type": "text", "content": "7 digits. Remove exactly 4. Keep 3. The kept digits must stay in their original left-to-right order — no rearranging allowed." }
+          ],
+          "figure": { "src": "/figures/mk-grade-3-4/lesson-1-1/MK_L11_WE2_digit_sequence.svg" },
+          "checkpoints": [
+            {
+              "id": "we2-s1-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "Keeping positions 4, 6, 7 from 4921508 gives digits 1, 0, 8. What 3-digit number is that? {blank}",
+                "answer": 108,
+                "tolerance": 0,
+                "hints": [
+                  "Read digits 1, 0, 8 in order as a number.",
+                  "1 in Hundreds, 0 in Tens, 8 in Ones.",
+                  "100 + 0 + 8 = ?"
+                ],
+                "explanation": "Positions 4, 6, 7 give digits 1, 0, 8 in order → 108."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we2-step-2",
+          "title": "Pick the Hundreds digit",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "For the Hundreds digit, we need at least 2 digits to its right. Check each position:",
+              "items": [
+                "Positions 1 to 5 — each has 2 or more digits to the right — all valid",
+                "Position 6 (digit 0) — only 1 digit to the right — not valid",
+                "Position 7 (digit 8) — no digits to the right — not valid"
+              ]
+            },
+            { "type": "text", "content": "The five digits available for Hundreds: 4, 9, 2, 1, 5. We want the smallest." }
+          ],
+          "checkpoints": [
+            {
+              "id": "we2-s2-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "How many digits are to the right of position 5 in 4921508? {blank}",
+                "answer": 2,
+                "tolerance": 0,
+                "hints": [
+                  "Position 5 is the fifth digit from the left.",
+                  "Count only the positions after position 5.",
+                  "Count the positions that follow position 5."
+                ],
+                "explanation": "Positions 6 (digit 0) and 7 (digit 8) are to the right of position 5 → 2 digits."
+              }
+            },
+            {
+              "id": "we2-s2-cp2",
+              "afterSegmentIndex": 1,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "The smallest digit among 4, 9, 2, 1, 5 is {blank}.",
+                "answer": 1,
+                "tolerance": 0,
+                "hints": [
+                  "Compare all five digits: 4, 9, 2, 1, 5.",
+                  "Which of these five is less than all the others?",
+                  "Compare 1 and 2 — which is the smaller one?"
+                ],
+                "explanation": "Ordered from smallest: 1, 2, 4, 5, 9. Smallest is 1, at position 4."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we2-step-3",
+          "title": "Pick the Tens digit",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "Hundreds digit is 1 (position 4). Now scan right for Tens — needs exactly 1 digit after it:",
+              "items": [
+                "Position 5 (digit 5) — 2 digits to the right — valid",
+                "Position 6 (digit 0) — 1 digit to the right — valid",
+                "Position 7 (digit 8) — no digits to the right — not valid"
+              ]
+            },
+            { "type": "text", "content": "Two choices for Tens: digit 5 (position 5) or digit 0 (position 6). We want the smaller one." }
+          ],
+          "checkpoints": [
+            {
+              "id": "we2-s3-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "mcq",
+                "question": "Which Tens digit gives the smaller final number?",
+                "options": ["(A) 5 — gives 158", "(B) 0 — gives 108"],
+                "answer": 1,
+                "hints": [
+                  "Compare the two options: 158 and 108.",
+                  "Does 15_ or 10_ give a smaller number?",
+                  "Which is smaller: 158 or 108?"
+                ],
+                "explanation": "108 is smaller than 158. Tens = 0 (position 6) gives the smallest result."
+              }
+            },
+            {
+              "id": "we2-s3-cp2",
+              "afterSegmentIndex": 1,
+              "question": {
+                "type": "fill_in_blank",
+                "question": "The smallest 3-digit number from 4921508 is {blank}.",
+                "answer": 108,
+                "tolerance": 0,
+                "hints": [
+                  "Hundreds and Tens are set. One digit remains.",
+                  "The remaining digit is at position 7.",
+                  "Position 7 holds which digit in 4921508?"
+                ],
+                "explanation": "Kept positions 4, 6, 7 → digits 1, 0, 8 → 108."
+              }
+            }
+          ]
+        },
+        {
+          "id": "we2-step-4",
+          "title": "Name the removed digits",
+          "narrationSegments": [
+            {
+              "type": "list",
+              "content": "Kept: positions 4, 6, 7 → digits 1, 0, 8. Everything else was removed:",
+              "items": [
+                "Position 1 → digit 4 — removed",
+                "Position 2 → digit 9 — removed",
+                "Position 3 → digit 2 — removed",
+                "Position 5 → digit 5 — removed"
+              ]
+            }
+          ],
+          "figure": { "src": "/figures/mk-grade-3-4/lesson-1-1/MK_L11_WE2_kept_removed.svg" },
+          "checkpoints": [
+            {
+              "id": "we2-s4-cp1",
+              "afterSegmentIndex": 0,
+              "question": {
+                "type": "mcq",
+                "question": "Which answer option lists the four removed digits?",
+                "options": [
+                  "(A) 4, 9, 2, 1",
+                  "(B) 4, 2, 1, 0",
+                  "(C) 1, 5, 0, 8",
+                  "(D) 4, 9, 2, 5",
+                  "(E) 4, 9, 5, 8"
+                ],
+                "answer": 3,
+                "hints": [
+                  "The kept digits are 1, 0, 8. Cross those out.",
+                  "Cross out 1, 0, and 8 from the original list.",
+                  "Match what remains against the answer options."
+                ],
+                "explanation": "Removed positions 1, 2, 3, 5 → digits 4, 9, 2, 5 → option D."
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "block-5-practice-lab",
+      "block_type": "practice_lab",
+      "title": "Practice Lab",
+      "note": "Problems 1–3: direct application, 3pt. Problems 4–7: two-step or competition-authentic, 4pt. Problem 8: competition-authentic, 4pt.",
+      "estimatedMinutes": 8,
+      "problems": [
+        {
+          "id": "P1",
+          "type": "sort_order",
+          "source": "original",
+          "question": "Sam has digit tiles [card:4], [card:7], and [card:9]. Tap to arrange them — left to right — to make the BIGGEST 3-digit number.",
+          "items": ["9", "7", "4"],
+          "correctOrder": [0, 1, 2],
+          "explanation": "Biggest digit (9) in Hundreds, then 7 in Tens, then 4 in Ones → 974.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-3pt"],
+          "hints": [
+            "Biggest tile goes in Hundreds.",
+            "9 is placed. Which remaining tile is bigger?",
+            "Two tiles remain — put the bigger one in Tens."
+          ]
+        },
+        {
+          "id": "P2",
+          "type": "mcq",
+          "source": "pyq",
+          "question": "About the number 325, five boys said: Andy: \"This is a 3-digit number.\" Barry: \"All the digits are different.\" Charlie: \"The sum of the digits is 10.\" Danny: \"The ones digit is 5.\" Eddie: \"All the digits are odd.\" Which of the boys was wrong?",
+          "options": ["(A) Andy", "(B) Barry", "(C) Charlie", "(D) Danny", "(E) Eddie"],
+          "answer": 4,
+          "explanation": "325: Andy is right (3-digit). Barry is right (3, 2, 5 are all different). Charlie is right (3 + 2 + 5 = 10). Danny is right (ones digit is 5). Eddie is wrong — digit 2 is even, not odd.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value", "mk-number-theory-digits"],
+          "tags": ["foundations", "mk-3pt", "pyq-2013-q08"],
+          "pyqRef": { "year": 2013, "q": "Q08", "difficulty": 3 },
+          "hints": [
+            "Check each boy's claim one at a time.",
+            "Which digits of 325 are odd and which are even?",
+            "Is every digit of 325 an odd number?"
+          ]
+        },
+        {
+          "id": "P3",
+          "type": "mcq",
+          "source": "original",
+          "question": "What is the BIGGEST digit that can replace the blank in 6_3 so that 6_3 stays less than 670?",
+          "options": ["(A) 4", "(B) 5", "(C) 6", "(D) 7", "(E) 8"],
+          "answer": 2,
+          "explanation": "Tens = 6 gives 663, which is less than 670. Tens = 7 gives 673, which is greater than 670. Biggest valid Tens digit = 6.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-3pt"],
+          "hints": [
+            "Replace the blank with any digit.",
+            "Try digit 7 — is 673 less than 670?",
+            "Now try digit 6 — is 663 less than 670?"
+          ]
+        },
+        {
+          "id": "P4",
+          "type": "mcq",
+          "source": "original",
+          "question": "Benny was supposed to move his number one step LEFT on the place value chart. By mistake, he moved it one step RIGHT instead. He ended up with 40. What was the correct answer supposed to be?",
+          "options": ["(A) 4", "(B) 400", "(C) 4,000", "(D) 40,000", "(E) 400,000"],
+          "answer": 2,
+          "explanation": "Moving right divides by 10. He got 40, so his number was 40 times 10 = 400. Moving left multiplies by 10. 400 times 10 = 4,000.",
+          "difficulty": 4,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-4pt"],
+          "hints": [
+            "He went the wrong way. He should go left.",
+            "Going right made his number smaller. He got 40.",
+            "Find his real number first. Then move it left."
+          ]
+        },
+        {
+          "id": "P5",
+          "type": "mcq",
+          "source": "original",
+          "question": "In the number 528, by how much does the value of digit 5 exceed the value of digit 2?",
+          "options": ["(A) 20", "(B) 48", "(C) 460", "(D) 480", "(E) 500"],
+          "answer": 3,
+          "explanation": "5 is in Hundreds → worth 500. 2 is in Tens → worth 20. Difference: 500 − 20 = 480.",
+          "difficulty": 4,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-4pt"],
+          "hints": [
+            "Find what digit 5 is worth in 528.",
+            "5 is in Hundreds. 2 is in Tens. Find both values.",
+            "Subtract the smaller value from the larger."
+          ]
+        },
+        {
+          "id": "P6",
+          "type": "mcq",
+          "source": "pyq",
+          "question": "David wrote a one-digit number, and next to it to the right he wrote another digit to form a two-digit number. Then he added 19 to this number and the sum was 72. What was the first digit he wrote?",
+          "options": ["(A) 2", "(B) 5", "(C) 6", "(D) 7", "(E) 9"],
+          "answer": 1,
+          "explanation": "Two-digit number + 19 = 72, so the number is 53. David's first digit is the Tens digit of 53, which is 5.",
+          "difficulty": 4,
+          "skills": ["mk-number-theory-place-value", "mk-number-theory-digits"],
+          "tags": ["foundations", "mk-4pt", "pyq-2007-q15"],
+          "pyqRef": { "year": 2007, "q": "Q15", "difficulty": 4 },
+          "hints": [
+            "Work backwards — subtract 19 from 72.",
+            "David's first digit is the Tens digit of that number.",
+            "What is the Tens digit of your answer?"
+          ]
+        },
+        {
+          "id": "P7",
+          "type": "mcq",
+          "source": "pyq",
+          "question": "Steven wants to write each of the digits 2, 0, 1, and 9 in one of the boxes of the addition: □□□ + □. He wants to get the BIGGEST possible total. Which digit goes in the separate box?",
+          "options": ["(A) Either 0 or 1", "(B) Either 0 or 2", "(C) Only 0", "(D) Only 1", "(E) Only 2"],
+          "answer": 0,
+          "explanation": "To maximize, put 9 in the Hundreds of the 3-digit number. Then test: 921 + 0 = 921 and 920 + 1 = 921. Both give the same maximum. So either 0 or 1 can go in the separate box.",
+          "difficulty": 4,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-4pt", "pyq-2019-q14"],
+          "pyqRef": { "year": 2019, "q": "Q14", "difficulty": 4 },
+          "hints": [
+            "Which place is worth the most?",
+            "Put 9 in Hundreds. Now try two arrangements.",
+            "Compare the totals of those two arrangements."
+          ]
+        },
+        {
+          "id": "P8",
+          "type": "sort_order",
+          "source": "original",
+          "question": "Tom has digit tiles [card:7], [card:0], [card:3], [card:5]. Arrange them left to right to make the BIGGEST 4-digit number. Remember: 0 cannot go first.",
+          "items": ["7", "5", "3", "0"],
+          "correctOrder": [0, 1, 2, 3],
+          "explanation": "0 cannot lead. Sort from biggest to smallest: 7 in thousands, 5 in hundreds, 3 in tens, 0 in ones → 7530.",
+          "difficulty": 4,
+          "skills": ["mk-number-theory-place-value"],
+          "tags": ["foundations", "mk-4pt"],
+          "hints": [
+            "Biggest tile goes in Thousands.",
+            "7 is placed. Now sort the remaining tiles biggest first.",
+            "After 7, arrange 5, 3, 0 from biggest to smallest."
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "block-6-mastery-check",
+      "block_type": "mastery_check",
+      "title": "Mastery Check",
+      "note": "4 original questions. No hints. Pass 3/4 to unlock Lesson 1.2. On fail: returned to Practice Lab.",
+      "estimatedMinutes": 4,
+      "passCount": 3,
+      "total": 4,
+      "onFailReturnTo": "practice_lab",
+      "hintsAllowed": false,
+      "questions": [
+        {
+          "id": "MC1",
+          "type": "mcq",
+          "source": "original",
+          "question": "Digit tiles [card:6], [card:0], and [card:4] are on your desk. What is the BIGGEST 3-digit number you can build?",
+          "options": ["(A) 046", "(B) 406", "(C) 460", "(D) 604", "(E) 640"],
+          "answer": 4,
+          "explanation": "Biggest digit (6) in Hundreds, next (4) in Tens, 0 in Ones → 640.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"]
+        },
+        {
+          "id": "MC2",
+          "type": "mcq",
+          "source": "original",
+          "question": "Digit tiles [card:3], [card:8], and [card:1] are on your desk. What is the smallest 3-digit number you can build?",
+          "options": ["(A) 138", "(B) 183", "(C) 318", "(D) 381", "(E) 813"],
+          "answer": 0,
+          "explanation": "Smallest non-zero digit (1) in Hundreds, next (3) in Tens, largest (8) in Ones → 138.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"]
+        },
+        {
+          "id": "MC3",
+          "type": "mcq",
+          "source": "original",
+          "question": "Maya has digit tiles [card:3], [card:6], [card:1]. Which arrangement gives the SMALLEST 3-digit number?",
+          "options": [
+            "(A) Hundreds=1, Tens=3, Ones=6",
+            "(B) Hundreds=3, Tens=1, Ones=6",
+            "(C) Hundreds=1, Tens=6, Ones=3",
+            "(D) Hundreds=6, Tens=3, Ones=1",
+            "(E) Hundreds=3, Tens=6, Ones=1"
+          ],
+          "answer": 0,
+          "explanation": "Smallest non-zero digit (1) in Hundreds, then 3 in Tens, then 6 in Ones → 136.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"]
+        },
+        {
+          "id": "MC4",
+          "type": "mcq",
+          "source": "original",
+          "question": "A number has 5 Hundreds, 0 Tens, and 8 Ones. What is the number?",
+          "options": ["(A) 58", "(B) 508", "(C) 580", "(D) 5,008", "(E) 5,080"],
+          "answer": 1,
+          "explanation": "5 Hundreds = 500. 0 Tens = 0. 8 Ones = 8. Total: 500 + 0 + 8 = 508.",
+          "difficulty": 3,
+          "skills": ["mk-number-theory-place-value"]
+        }
+      ]
+    },
+
+    {
+      "id": "block-7-challenge-extension",
+      "block_type": "challenge_extension",
+      "title": "Challenge Extension",
+      "note": "One hard problem. Always accessible — never gated by the mastery check.",
+      "estimatedMinutes": 4,
+      "problems": [
+        {
+          "id": "CE1",
+          "type": "mcq",
+          "source": "pyq",
+          "question": "One number was chosen from 51, 52, 53, 54, and 55. The digit 0 was placed between the two digits of that number. What is the difference between the new number and the original?",
+          "options": ["(A) 500", "(B) 50", "(C) 550", "(D) 450", "(E) The difference depends on which number was chosen."],
+          "answer": 3,
+          "explanation": "Try 53 — insert 0 to get 503. Difference: 503 − 53 = 450. Try 51 — get 501. Difference: 501 − 51 = 450. Same answer every time. Why? The tens digit shifts to hundreds (times 10), and the tens column becomes 0. The gain is always 5 times 90 = 450.",
+          "difficulty": 5,
+          "skills": ["mk-number-theory-place-value", "mk-number-theory-digits"],
+          "tags": ["foundations", "mk-5pt", "pyq-1999-q22", "challenge-extension"],
+          "pyqRef": { "year": 1999, "q": "Q22", "difficulty": 5 },
+          "hints": [
+            "Pick any one number. Place 0 between its digits.",
+            "Subtract the original from the new number.",
+            "Try a second number. Do you get the same difference?"
+          ]
+        }
+      ]
+    }
+  ]
+}
